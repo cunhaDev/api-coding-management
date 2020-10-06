@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class ApiGerencimentoApplication {
 
-    @GetMapping
-    public String getBook(){
-        return "API Test!";
-    }
 	public static void main(String[] args) {
-		SpringApplication.run(ApiGerencimentoApplication.class, args);
-	}
+        SpringApplication.run(ApiGerencimentoApplication.class, args);
 
+    }
+        @GetMapping
+        public String getBook () {
+            return "Api Test";
+    }
 }
