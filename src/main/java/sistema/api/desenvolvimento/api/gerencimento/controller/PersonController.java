@@ -9,7 +9,7 @@ import sistema.api.desenvolvimento.api.gerencimento.entity.Person;
 import sistema.api.desenvolvimento.api.gerencimento.repositorio.PersonRepositorio;
 
 @RestController
-@RequestMapping("/ap/v1/person")
+@RequestMapping("/api/versao1/gerencia")
 
 public  class  PersonController {
 
