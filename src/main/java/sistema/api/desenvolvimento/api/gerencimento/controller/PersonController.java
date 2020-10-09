@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sistema.api.desenvolvimento.api.gerencimento.dto.MessageResponseDTO;
 import sistema.api.desenvolvimento.api.gerencimento.entity.Person;
 import sistema.api.desenvolvimento.api.gerencimento.repositorio.PersonRepositorio;
 
 @RestController
-@RequestMapping("/api/versao1/gerencia")
+@RequestMapping("/api/v1/people")
 
 public  class  PersonController {
 
@@ -21,11 +22,11 @@ public  class  PersonController {
     }
 
     @PostMapping
-    public MessageReponseDTO createPerson (@RequestBody Person person) {
+    public MessageResponseDTO createPerson (@RequestBody Person person) {
         Person savedPerson = personRepositorio.save(person);
-        return MessageResponseDT0
+        return MessageResponseDTO
                 .builder()
-                .message("criando person e ID" + savedPerson.getId())
+                .message("created person with ID " + savedPerson.getId())
                 .build();
     }
 }
