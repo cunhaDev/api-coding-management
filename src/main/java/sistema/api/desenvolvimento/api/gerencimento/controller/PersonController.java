@@ -7,27 +7,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sistema.api.desenvolvimento.api.gerencimento.dto.MessageResponseDTO;
 import sistema.api.desenvolvimento.api.gerencimento.entity.Person;
-import sistema.api.desenvolvimento.api.gerencimento.repositorio.PersonRepositorio;
+import sistema.api.desenvolvimento.api.gerencimento.service.PersonService;
 
 @RestController
 @RequestMapping("/api/v1/people")
 
 public  class  PersonController {
 
-    private PersonRepositorio personRepositorio;
+    private PersonService personService;
 
     @Autowired
-    public PersonController(PersonRepositorio personRepositorio) {
-        this.personRepositorio = personRepositorio;
+    public PersonController(PersonService personService) {
+        this.personService = personService;
     }
 
     @PostMapping
     public MessageResponseDTO createPerson (@RequestBody Person person) {
-        Person savedPerson = personRepositorio.save(person);
-        return MessageResponseDTO
-                .builder()
-                .message("created person with ID " + savedPerson.getId())
-                .build();
+        return personService.createPerson(person);
     }
 }
 
