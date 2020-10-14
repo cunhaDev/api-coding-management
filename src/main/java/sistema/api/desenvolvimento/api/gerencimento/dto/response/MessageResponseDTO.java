@@ -1,4 +1,4 @@
-package sistema.api.desenvolvimento.api.gerencimento.dto;
+package sistema.api.desenvolvimento.api.gerencimento.dto.response;
 
 
 

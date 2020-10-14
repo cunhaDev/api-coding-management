@@ -1,12 +1,10 @@
 package sistema.api.desenvolvimento.api.gerencimento.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import sistema.api.desenvolvimento.api.gerencimento.dto.MessageResponseDTO;
-import sistema.api.desenvolvimento.api.gerencimento.entity.Person;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import sistema.api.desenvolvimento.api.gerencimento.dto.request.PersonDTO;
+import sistema.api.desenvolvimento.api.gerencimento.dto.response.MessageResponseDTO;
 import sistema.api.desenvolvimento.api.gerencimento.service.PersonService;
 
 @RestController
@@ -22,8 +20,9 @@ public  class  PersonController {
     }
 
     @PostMapping
-    public MessageResponseDTO createPerson (@RequestBody Person person) {
-        return personService.createPerson(person);
+    @ResponseStatus(HttpStatus.CREATED)
+    public MessageResponseDTO createPerson (@RequestBody PersonDTO personDTO) {
+        return personService.createPerson(personDTO);
     }
 }
 

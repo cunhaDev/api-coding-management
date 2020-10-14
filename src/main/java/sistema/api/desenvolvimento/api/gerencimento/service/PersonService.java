@@ -3,8 +3,8 @@ package sistema.api.desenvolvimento.api.gerencimento.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import sistema.api.desenvolvimento.api.gerencimento.dto.MessageResponseDTO;
+import sistema.api.desenvolvimento.api.gerencimento.dto.request.PersonDTO;
+import sistema.api.desenvolvimento.api.gerencimento.dto.response.MessageResponseDTO;
 import sistema.api.desenvolvimento.api.gerencimento.entity.Person;
 import sistema.api.desenvolvimento.api.gerencimento.repositorio.PersonRepositorio;
 
@@ -19,8 +19,8 @@ public class PersonService {
     }
 
 
-    public MessageResponseDTO createPerson (Person person) {
-        Person savedPerson = personRepositorio.save(person);
+    public MessageResponseDTO createPerson (PersonDTO personDTO) {
+        Person savedPerson = personRepositorio.save(personDTO);
         return MessageResponseDTO
                 .builder()
                 .message("created person with ID " + savedPerson.getId())
