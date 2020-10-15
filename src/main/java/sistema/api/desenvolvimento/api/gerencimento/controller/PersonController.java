@@ -7,6 +7,8 @@ import sistema.api.desenvolvimento.api.gerencimento.dto.request.PersonDTO;
 import sistema.api.desenvolvimento.api.gerencimento.dto.response.MessageResponseDTO;
 import sistema.api.desenvolvimento.api.gerencimento.service.PersonService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/people")
 
@@ -21,7 +23,7 @@ public  class  PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createPerson (@RequestBody PersonDTO personDTO) {
+    public MessageResponseDTO createPerson (@RequestBody @Valid PersonDTO personDTO) {
         return personService.createPerson(personDTO);
     }
 }
