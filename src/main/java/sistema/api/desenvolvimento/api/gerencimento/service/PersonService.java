@@ -9,6 +9,10 @@ import sistema.api.desenvolvimento.api.gerencimento.entity.Person;
 import sistema.api.desenvolvimento.api.gerencimento.mapper.PersonMapper;
 import sistema.api.desenvolvimento.api.gerencimento.repositorio.PersonRepositorio;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 public class PersonService {
 
@@ -31,5 +35,22 @@ public class PersonService {
                 .builder()
                 .message("created person with ID " + savedPerson.getId())
                 .build();
+    }
+
+
+    public List<PersonDTO> listAll() {
+        List<Person> allPeople = personRepositorio.findAll();
+        return allPeople.stream()
+                .map(personMapper::toDTO)
+                .collect(Collectors.toList());
+
+    }
+
+    public PersonDTO findById(Long id) {
+        Optional<Person> optionalPerson = personRepositorio.findById(id);
+    if (optionalPerson.isEmpty()) {
+        throw new PersonNotFoundException(id);
+    }
+        return personMapper.toDTO(optionalPerson.get());
     }
 }
