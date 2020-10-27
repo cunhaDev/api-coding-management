@@ -42,4 +42,11 @@ public class Person {
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<Phone> phones;
 
+    public Long getId () {
+        return id;
+    }
+
+    public void setId (Long id) {
+        this.id = id;
+    }
 }

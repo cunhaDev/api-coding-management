@@ -1,7 +1,6 @@
 package sistema.api.desenvolvimento.api.gerencimento.dto.response;
 
 
-
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,5 +11,4 @@ import lombok.Data;
 public class MessageResponseDTO {
 
     private String message;
-
 }
